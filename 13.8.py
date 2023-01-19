@@ -1,3 +1,4 @@
+total_price = 0
 while True:
     try:
         ticket_counter = int(input('Сколько билетов хотите приобрести?: '))
@@ -10,8 +11,11 @@ for i in range(ticket_counter):
     while True:
         try:
             owners_age = int(input(f'Укажите возраст владельца билета №{i}? '))
-            if owners_age < 18:
-                print('Билет бесплатный! ')
+            if 0 < owners_age < 18:
+                print('До 18 лет билет бесплатный! ')
+            elif owners_age <= 0:
+                print('Не верное значение! ')
+                ticket_counter = ticket_counter - 1
             elif 18 <= owners_age < 25:
                 total_price += 990
                 print('Стоимость билета: 990 руб. ')
